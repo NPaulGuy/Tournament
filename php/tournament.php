@@ -15,7 +15,7 @@
                 case 1: 
                 {
                     $this->name = $params[0];
-                    # date is equal to today's time + 24 hours => tomorrow        
+                    # date is equal to today's time       
                     $this->date = date("d.m.Y", time());
                     break;
                 }

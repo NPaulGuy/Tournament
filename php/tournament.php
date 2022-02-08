@@ -61,7 +61,6 @@
                     date("d.m.Y", strtotime($this->date) + $i * 60 * 60 * 24) . "<br>";
                 for($j = 0, $k = $playersCount - 1; $j < $k; $j++, $k--) {
                     if(!empty($players[$j]) && !empty($players[$k])) {
-                        #echo $players[$j]->getName() . ' - ' . $players[$k]->getName() . '<br>';
                         echo $players[$j]->getName() . ' ';
                         echo (!empty($players[$j]->getCity())) ? '(' . $players[$j]->getCity() . ')' : "";
                         echo ' - ';

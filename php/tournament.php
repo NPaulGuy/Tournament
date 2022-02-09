@@ -6,7 +6,13 @@
         public function __construct($name, $date = NULL) {
             $this->name = $name;
             if($date !== NULL) {
-                $this->date = $date;
+                $pattern = "#^(\d{4})\.(\d{2})\.(\d{2})$#";
+
+                if(preg_match($pattern,$date)) {
+                    $replacement = "$3.$2.$1";
+                    $this->date = preg_replace($pattern,$replacement,$date);
+                }
+                else return "Wrong date!"; 
             }
             else {
                 $this->date = date("d.m.Y", time());

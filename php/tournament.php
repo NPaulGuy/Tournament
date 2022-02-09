@@ -3,42 +3,14 @@
         private $name;
         private $date;
         private $players = [];
-        public function __construct() {
-            $count = func_num_args();
-            $params = func_get_args();
-
-            switch($count) {
-                case 0: {
-                    return "Too low parameters!";
-                }
-
-                case 1: 
-                {
-                    $this->name = $params[0];
-                    # date is equal to today's time       
-                    $this->date = date("d.m.Y", time());
-                    break;
-                }
-                case 2: 
-                {
-                    $this->name = $params[0]; 
-
-                    $pattern = "#^(\d{4})\.(\d{2})\.(\d{2})$#";
-                    $date = $params[1];
-                    if(!preg_match($pattern, $date)) {
-                        $this->date = date("d.m.Y", time());
-                    }
-                    else {
-                        $replacement = "$3.$2.$1";
-                        $this->date = preg_replace($pattern,$replacement,$date);
-                    }
-                    break;
-                }
-                default:
-                {
-                    return "Too many parameters!";
-                }
-            } 
+        public function __construct($name, $date = NULL) {
+            $this->name = $name;
+            if($date !== NULL) {
+                $this->date = $date;
+            }
+            else {
+                $this->date = date("d.m.Y", time());
+            }
         }
 
         public function addPlayer(Player $player) {
